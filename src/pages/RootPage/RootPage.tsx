@@ -5,6 +5,7 @@ import { Content, Header, Footer } from 'antd/es/layout/layout';
 import AppFooter from '@/components/AppFooter/AppFooter';
 import { Outlet } from 'react-router-dom';
 import AppMenu from '@/components/AppMenu/AppMenu';
+import AppMessage from '@/components/AppMessage/AppMessage';
 
 const RootPage = (): JSX.Element => {
   const [isCollapsed, setIsCollapsed] = useState(true)
@@ -22,6 +23,7 @@ const RootPage = (): JSX.Element => {
         </Content>
         <Footer style={{textAlign: 'center'}}>
           <AppFooter />
+          <AppMessage />
         </Footer>
       </Layout>
     </Layout>
