@@ -1,0 +1,11 @@
+.RootPage {
+  min-height: 100vh;
+  &__sider {
+    @include _768 {
+      display: none;
+    }
+  }
+  &__footer {
+    text-align: center;
+  }
+}

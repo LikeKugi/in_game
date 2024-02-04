@@ -22,7 +22,7 @@ export const RoutesPath: IRoutesPaths = {
     description: 'Личный кабинет'
   },
   PLAYER_TRAINING: {
-    path: '/training',
+    path: '/trainings',
     description: 'Тренировки',
   },
   PLAYER_STATS_TRAINING: {

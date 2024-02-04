@@ -11,4 +11,11 @@ export default defineConfig({
       { find: '~', replacement: fileURLToPath(new URL('./', import.meta.url)) },
     ]
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: "@import \"@/styles/style.scss\";",
+      }
+    }
+  }
 })
