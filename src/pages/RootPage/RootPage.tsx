@@ -8,7 +8,7 @@ import AppMenu from '@/components/AppMenu/AppMenu';
 import AppMessage from '@/components/AppMessage/AppMessage';
 
 const RootPage = (): JSX.Element => {
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <Layout style={{minHeight: '100vh'}}>
       <Sider collapsible collapsed={isCollapsed} onCollapse={() => setIsCollapsed(prevState => !prevState)}>

@@ -3,10 +3,14 @@ import { Menu, MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { RoutesPath } from '@/routes';
 import { GrDomain } from 'react-icons/gr';
-import { IoIosLogIn } from 'react-icons/io';
+import { useAppSelector } from '@/store/hooks';
+import { selectIsLoggedIn } from '@/store/slices/AuthSlice';
+import { getLoginMenuPart, getPlayerMenuPart } from '@/components/AppMenu/parts';
 
 
 const AppMenu = (): JSX.Element => {
+
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   const navigate = useNavigate();
 
@@ -16,12 +20,11 @@ const AppMenu = (): JSX.Element => {
       key: RoutesPath.INDEX.path,
       icon: <GrDomain />,
     },
-    {
-      label: RoutesPath.LOGIN.description,
-      key: RoutesPath.LOGIN.path,
-      icon: <IoIosLogIn />,
-    }
   ]
+
+  items.push(...getPlayerMenuPart());
+
+  items.push(getLoginMenuPart(isLoggedIn));
 
   const onClick: MenuProps['onClick'] = (item) => {
     navigate(item.key);
@@ -29,7 +32,7 @@ const AppMenu = (): JSX.Element => {
 
   return (
     <>
-      <Menu onClick={onClick} mode={'vertical'} items={items} />
+      <Menu onClick={onClick} mode={'inline'} items={items} />
     </>
   );
 };

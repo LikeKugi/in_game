@@ -16,5 +16,33 @@ export const RoutesPath: IRoutesPaths = {
   LOGOUT: {
     path: '/logout',
     description: 'Выход',
+  },
+  PLAYER_BIO: {
+    path: '/user',
+    description: 'Личный кабинет'
+  },
+  PLAYER_TRAINING: {
+    path: '/training',
+    description: 'Тренировки',
+  },
+  PLAYER_STATS_TRAINING: {
+    path: '/training',
+    description: 'Статистика',
+  },
+  PLAYER_BEFORE_TRAINING: {
+    path: '/before',
+    description: 'Перед тренировкой',
+  },
+  PLAYER_AFTER_TRAINING: {
+    path: '/after',
+    description: 'После тренировки',
+  },
+  PLAYER_TEAMS: {
+    path: '/teams',
+    description: 'Команды',
+  },
+  PLAYER_CALENDAR: {
+    path: '/calendar',
+    description: 'Расписание',
   }
 }

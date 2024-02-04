@@ -4,7 +4,7 @@ import { ILoginFormField } from '@/types';
 import { ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { useAppDispatch } from '@/store/hooks';
 import { setErrorMessage } from '@/store/slices/ErrorSlice';
-import { useLoginUserMutation } from '@/api/auth.api';
+import { useLoginUserMutation } from '@/api';
 
 const err = 'Неверный Логин или Пароль'
 

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IAuthSliceState } from '@/store/slices/AuthSlice/AuthSlice.types';
-import { authApi } from '@/api/auth.api';
+import { authApi } from '@/api/inject/auth.api';
 import { RootState } from '@/store/store';
 
 const initialState: IAuthSliceState = {
@@ -27,6 +27,7 @@ const AuthSlice = createSlice({
   }
 });
 
+export const selectIsLoggedIn = (store: RootState) => !!store.AuthSliceReducer.refreshToken;
 export const selectUserId = (store: RootState) => store.AuthSliceReducer.id;
 export const selectUserName = (store: RootState) => store.AuthSliceReducer.username;
 export const selectUserAccessToken = (store: RootState) => store.AuthSliceReducer.accessToken;
