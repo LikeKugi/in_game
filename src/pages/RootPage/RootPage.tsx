@@ -7,9 +7,15 @@ import { Outlet } from 'react-router-dom';
 import AppMenu from '@/components/AppMenu/AppMenu';
 import AppMessage from '@/components/AppMessage/AppMessage';
 import styles from './RootPage.module.scss'
+import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
 
 const RootPage = (): JSX.Element => {
+
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const screens = useBreakpoint();
+
+  console.log(screens)
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -17,8 +23,15 @@ const RootPage = (): JSX.Element => {
     <Layout className={styles.RootPage}>
       <Sider collapsible
              collapsed={isCollapsed}
+             collapsedWidth={!screens.md ? 0 : undefined}
              onCollapse={() => setIsCollapsed(prevState => !prevState)}
-             theme="dark" className={styles.RootPage__sider}>
+             theme="dark"
+             onBreakpoint={(screen) => {
+               console.log(screen);
+             }}
+             zeroWidthTriggerStyle={{
+               top: "0.7rem",
+             }}>
         <AppMenu/>
       </Sider>
       <Content style={{ display: 'flex', flexDirection: 'column' }}>
