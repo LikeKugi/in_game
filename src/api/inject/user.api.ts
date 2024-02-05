@@ -1,5 +1,5 @@
 import { api } from '@/api/api';
-import { IUserShortBioResponse } from '@/types';
+import { IUserBioRequest, IUserLongBioResponse, IUserShortBioResponse } from '@/types';
 
 export const userApi = api.injectEndpoints({
   endpoints: build => ({
@@ -7,11 +7,22 @@ export const userApi = api.injectEndpoints({
       query(userId) {
         return {
           url: `/users/short/${userId}`,
-          method: 'GET'
+          method: 'GET',
         };
+      }
+    }),
+    getUserLongBio: build.query<IUserLongBioResponse, IUserBioRequest>({
+      query({userId, userToken}) {
+        return {
+          url: `/users/info/${userId}`,
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${userToken}`
+          }
+        }
       }
     })
   })
 });
 
-export const { useLazyGetUserShortBioQuery } = userApi;
+export const { useLazyGetUserShortBioQuery, useGetUserLongBioQuery } = userApi;

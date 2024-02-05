@@ -13,11 +13,18 @@ const initialState: IAuthSliceState = {
 const AuthSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logoutAuthUser: (state) => {
+      state.id = null;
+      state.username = null;
+      state.accessToken = null;
+      state.refreshToken = null;
+    }
+  },
   extraReducers: builder => {
     builder.addMatcher(
       authApi.endpoints.loginUser.matchFulfilled,
-      (state, {payload}) => {
+      (state, { payload }) => {
         state.id = payload.id;
         state.username = payload.username;
         state.accessToken = payload.accessToken;
@@ -27,10 +34,11 @@ const AuthSlice = createSlice({
   }
 });
 
+export const { logoutAuthUser } = AuthSlice.actions;
 export const selectIsLoggedIn = (store: RootState) => !!store.AuthSliceReducer.refreshToken;
-export const selectUserId = (store: RootState) => store.AuthSliceReducer.id;
-export const selectUserName = (store: RootState) => store.AuthSliceReducer.username;
-export const selectUserAccessToken = (store: RootState) => store.AuthSliceReducer.accessToken;
-export const selectUserRefreshToken = (store: RootState) => store.AuthSliceReducer.refreshToken;
+export const selectAuthUserId = (store: RootState) => store.AuthSliceReducer.id;
+export const selectAuthUserName = (store: RootState) => store.AuthSliceReducer.username;
+export const selectAuthUserAccessToken = (store: RootState) => store.AuthSliceReducer.accessToken;
+export const selectAuthUserRefreshToken = (store: RootState) => store.AuthSliceReducer.refreshToken;
 
 export const AuthSliceReducer = AuthSlice.reducer;

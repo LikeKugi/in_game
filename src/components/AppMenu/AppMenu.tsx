@@ -5,6 +5,7 @@ import { useAppSelector } from '@/store/hooks';
 import { selectIsLoggedIn } from '@/store/slices/AuthSlice';
 import { makeMenu } from '@/utils/menuItems';
 import { UserRoles } from '@/types';
+import AppMenuHeader from '@/components/AppMenuHeader/AppMenuHeader';
 
 
 const AppMenu = (): JSX.Element => {
@@ -21,6 +22,7 @@ const AppMenu = (): JSX.Element => {
 
   return (
     <>
+      <AppMenuHeader isLoggedIn={isLoggedIn} />
       <Menu onClick={onClick}
             mode={'inline'}
             items={items}

@@ -14,8 +14,6 @@ const RootPage = (): JSX.Element => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const screens = useBreakpoint();
 
-  console.log(screens)
-
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -26,9 +24,6 @@ const RootPage = (): JSX.Element => {
              collapsedWidth={!screens.md ? 0 : undefined}
              onCollapse={() => setIsCollapsed(prevState => !prevState)}
              theme="dark"
-             onBreakpoint={(screen) => {
-               console.log(screen);
-             }}
              zeroWidthTriggerStyle={{
                top: "0.7rem",
              }}>
