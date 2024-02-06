@@ -9,3 +9,10 @@ export interface IAuthLoginRequest {
   username: string
   password: string
 }
+
+export interface IAuthRefreshResponse {
+  id: number
+  username: string
+  accessToken: string
+  refreshToken: string
+}

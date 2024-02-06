@@ -31,6 +31,17 @@ const AuthSlice = createSlice({
         state.refreshToken = payload.refreshToken;
       }
     );
+    builder.addMatcher(
+      authApi.endpoints.refreshUser.matchFulfilled,
+      (state, {payload}) => {
+        state.id = payload.id;
+        state.username = payload.username;
+        state.accessToken = payload.accessToken;
+        if (state.refreshToken !== payload.refreshToken) {
+          state.refreshToken = payload.refreshToken;
+        }
+      }
+    )
   }
 });
 
