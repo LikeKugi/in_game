@@ -12,9 +12,11 @@ const item: ItemType = {
   };
 
 
-export const makeMenu = (isLoggedIn: boolean, role: UserRoles = UserRoles.USER): ItemType[] => {
+export const makeMenu = (isLoggedIn: boolean, role: UserRoles | null = UserRoles.USER): ItemType[] => {
   const menu: ItemType[] = [item];
-  menu.push(...makeRolePartMenu(role));
+  if (role) {
+    menu.push(...makeRolePartMenu(role));
+  }
   menu.push(getLoginMenuPart(isLoggedIn));
   return menu;
 }

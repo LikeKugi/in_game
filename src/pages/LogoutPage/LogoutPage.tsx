@@ -1,19 +1,16 @@
 import { JSX, useEffect } from 'react';
-import { useAppDispatch } from '@/store/hooks';
-import { logoutAuthUser } from '@/store/slices/AuthSlice';
 import { useNavigate } from 'react-router-dom';
 import { RoutesPath } from '@/routes';
-import { logoutBioUser } from '@/store/slices/UserSlice';
+import { useLogout } from '@/hooks';
 
 const LogoutPage = (): JSX.Element => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  useLogout();
+
   useEffect(() => {
-    dispatch(logoutAuthUser());
-    dispatch(logoutBioUser());
     navigate(RoutesPath.INDEX.path);
-  }, [dispatch, navigate])
+  }, [navigate])
 
   return <></>;
 };

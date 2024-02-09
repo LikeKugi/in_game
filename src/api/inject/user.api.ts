@@ -3,11 +3,14 @@ import { IUserBioRequest, IUserLongBioResponse, IUserShortBioResponse } from '@/
 
 export const userApi = api.injectEndpoints({
   endpoints: build => ({
-    getUserShortBio: build.query<IUserShortBioResponse, string | number>({
-      query(userId) {
+    getUserShortBio: build.query<IUserShortBioResponse, IUserBioRequest>({
+      query({ userId, userToken }) {
         return {
           url: `/users/short/${userId}`,
           method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${userToken}`
+          }
         };
       }
     }),
