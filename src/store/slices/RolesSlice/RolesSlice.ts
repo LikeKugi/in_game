@@ -20,11 +20,11 @@ export const RolesSlice = createSlice({
     builder.addMatcher(
       userApi.endpoints.getUserShortBio.matchFulfilled,
       (state, {payload}) => {
-        if (UserRoles.PLAYER in payload.roles) {
+        if (~payload.roles.indexOf(UserRoles.PLAYER)) {
           state.role = UserRoles.PLAYER;
           return;
         }
-        if (UserRoles.ADMIN in payload.roles) {
+        if (~payload.roles.indexOf(UserRoles.ADMIN)) {
           state.role = UserRoles.ADMIN;
           return;
         }
