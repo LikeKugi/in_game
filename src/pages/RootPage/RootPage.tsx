@@ -9,6 +9,9 @@ import AppMessage from '@/components/AppMessage/AppMessage';
 import styles from './RootPage.module.scss';
 import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
 import { useRefreshToken } from '@/hooks/useRefreshToken';
+import { useAppSelector } from '@/store/hooks';
+import { selectIsLoggedIn } from '@/store/slices/AuthSlice';
+import { selectUserRole } from '@/store/slices/RolesSlice';
 
 const RootPage = (): JSX.Element => {
 
@@ -20,6 +23,10 @@ const RootPage = (): JSX.Element => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const userRole = useAppSelector(selectUserRole);
+
   return (
 
     <Layout className={styles.RootPage}>
@@ -32,7 +39,7 @@ const RootPage = (): JSX.Element => {
                top: '0.7rem',
              }}>
         <Skeleton loading={isLoading}>
-          <AppMenu/>
+          <AppMenu isLoggedIn={isLoggedIn} userRole={userRole}/>
         </Skeleton>
       </Sider>
       <Content style={{ display: 'flex', flexDirection: 'column' }}>

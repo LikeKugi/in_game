@@ -4,7 +4,7 @@ import { ILoginFormField } from '@/types';
 import { ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { useAppDispatch } from '@/store/hooks';
 import { setErrorMessage } from '@/store/slices/ErrorSlice';
-import { useLoginUserMutation } from '@/api';
+import { useLazyGetUserShortBioQuery, useLoginUserMutation } from '@/api';
 
 const err = 'Неверный Логин или Пароль'
 
@@ -13,6 +13,7 @@ const LoginPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [loginUser] = useLoginUserMutation();
+  const [getUserShortBio] = useLazyGetUserShortBioQuery();
 
   const onFinish = (values: ILoginFormField) => {
     console.log('Success:', values);
@@ -20,7 +21,14 @@ const LoginPage = (): JSX.Element => {
       loginUser({
         username: values.username,
         password: values.password,
-      })
+      }).then((data) => {
+        if ('data' in data) {
+          getUserShortBio({
+            userId: data.data.id,
+            userToken: data.data.accessToken,
+          })
+        }
+      }).catch(() => {})
     }
   };
 

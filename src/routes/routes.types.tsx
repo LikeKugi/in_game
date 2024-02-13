@@ -6,18 +6,17 @@ export interface IRoute {
   icon?: ReactNode;
 }
 
-export type IRoutesAliases = 'INDEX' | 'LOGIN' | 'LOGOUT' | 'NOT_FOUND'
+export type IRoutesAliases =
+  'INDEX'
+  | 'LOGIN'
+  | 'LOGOUT'
+  | 'NOT_FOUND'
+  | 'PLAYER_BIO'
+  | 'PLAYER_TRAINING'
+  | 'PLAYER_STATS_TRAINING'
+  | 'PLAYER_BEFORE_TRAINING'
+  | 'PLAYER_AFTER_TRAINING'
+  | 'PLAYER_TEAMS'
+  | 'PLAYER_CALENDAR'
 
-export interface IRoutesPaths {
-  'INDEX': IRoute;
-  'LOGIN': IRoute;
-  'LOGOUT': IRoute;
-  'NOT_FOUND': IRoute;
-  'PLAYER_BIO': IRoute;
-  'PLAYER_TRAINING': IRoute;
-  PLAYER_STATS_TRAINING: IRoute;
-  'PLAYER_BEFORE_TRAINING': IRoute;
-  'PLAYER_AFTER_TRAINING': IRoute;
-  'PLAYER_TEAMS': IRoute;
-  'PLAYER_CALENDAR': IRoute;
-}
+export type IRoutesPaths = Record<IRoutesAliases, IRoute>;

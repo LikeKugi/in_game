@@ -1,19 +1,18 @@
-import { JSX } from 'react';
+import { FC, JSX } from 'react';
 import { Menu, MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '@/store/hooks';
-import { selectIsLoggedIn } from '@/store/slices/AuthSlice';
 import { makeMenu } from '@/utils/menuItems';
 import AppMenuHeader from '@/components/AppMenuHeader/AppMenuHeader';
-import { selectUserRole } from '@/store/slices/RolesSlice';
+import { UserRoles } from '@/types';
+
+interface IAppMenuProps {
+  isLoggedIn: boolean;
+  userRole: UserRoles | null;
+}
 
 
-const AppMenu = (): JSX.Element => {
-
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
-
+const AppMenu: FC<IAppMenuProps> = ({userRole, isLoggedIn}): JSX.Element => {
   const navigate = useNavigate();
-  const userRole = useAppSelector(selectUserRole);
 
   const items: MenuProps['items'] = makeMenu(isLoggedIn, userRole);
 
