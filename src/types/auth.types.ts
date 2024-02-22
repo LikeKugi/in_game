@@ -16,3 +16,17 @@ export interface IAuthRefreshResponse {
   accessToken: string
   refreshToken: string
 }
+
+export interface IAuthRegisterResponse {
+  name: string
+  lastName: string
+  username: string
+}
+
+export interface IAuthRegisterRequest {
+  name: string
+  lastName: string
+  username: string
+  password: string
+  passwordConfirmation: string
+}

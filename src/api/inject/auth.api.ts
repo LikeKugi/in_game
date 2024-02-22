@@ -1,5 +1,11 @@
 import { api } from '@/api/api';
-import { IAuthLoginRequest, IAuthLoginResponse, IAuthRefreshResponse } from '@/types';
+import {
+  IAuthLoginRequest,
+  IAuthLoginResponse,
+  IAuthRefreshResponse,
+  IAuthRegisterRequest,
+  IAuthRegisterResponse
+} from '@/types';
 
 export const authApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -20,8 +26,17 @@ export const authApi = api.injectEndpoints({
           body: token,
         }
       }
+    }),
+    registerUser: build.mutation<IAuthRegisterResponse,IAuthRegisterRequest>({
+      query(obj) {
+        return {
+          url: 'auth/register',
+          method: 'POST',
+          body: obj,
+        }
+      }
     })
   })
 });
 
-export const { useLoginUserMutation, useRefreshUserMutation } = authApi;
+export const { useLoginUserMutation, useRefreshUserMutation, useRegisterUserMutation } = authApi;

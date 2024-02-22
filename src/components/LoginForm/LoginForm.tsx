@@ -1,5 +1,5 @@
 import { FC, JSX } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { ILoginFormField } from '@/types';
 import type { ValidateErrorEntity } from 'rc-field-form/es/interface';
 
@@ -11,14 +11,15 @@ interface ILoginFormProps {
 const LoginForm: FC<ILoginFormProps> = ({ onFinish, onFinishFailed }): JSX.Element => {
   return (
     <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
+      name="login"
+      labelCol={{ span: 6 }}
+      wrapperCol={{ span: 24 }}
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
+      colon={false}
     >
       <Form.Item<ILoginFormField>
         label="Логин"
@@ -36,15 +37,7 @@ const LoginForm: FC<ILoginFormProps> = ({ onFinish, onFinishFailed }): JSX.Eleme
         <Input.Password autoComplete={'current-password'}/>
       </Form.Item>
 
-      <Form.Item<ILoginFormField>
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{ offset: 0, span: 16 }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
-      <Form.Item wrapperCol={{ offset: 0, span: 16 }}>
+      <Form.Item label={' '}>
         <Button type="primary"
                 htmlType="submit">
           Войти

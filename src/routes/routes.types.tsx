@@ -10,6 +10,7 @@ export type IRoutesAliases =
   'INDEX'
   | 'LOGIN'
   | 'LOGOUT'
+  | 'REGISTRATION'
   | 'NOT_FOUND'
   | 'PLAYER_BIO'
   | 'PLAYER_TRAINING'

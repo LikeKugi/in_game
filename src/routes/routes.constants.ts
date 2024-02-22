@@ -17,6 +17,10 @@ export const RoutesPath: IRoutesPaths = {
     path: '/logout',
     description: 'Выход',
   },
+  REGISTRATION: {
+    path: '/registration',
+    description: 'Регистрация'
+  },
   PLAYER_BIO: {
     path: '/user',
     description: 'Личный кабинет'

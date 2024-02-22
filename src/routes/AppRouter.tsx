@@ -10,6 +10,7 @@ import PrivateGuardPage from '@/pages/PrivateGuardPage/PrivateGuardPage';
 import PlayerPage from '@/pages/player/PlayerPage/PlayerPage';
 import PlayerBioPage from '@/pages/player/PlayerBioPage/PlayerBioPage';
 import LogoutPage from '@/pages/LogoutPage/LogoutPage';
+import RegistrationPage from '@/pages/RegistrationPage/RegistrationPage';
 
 const routes = createBrowserRouter(createRoutesFromElements(
   <Route path={RoutesPath.INDEX.path}
@@ -25,6 +26,7 @@ const routes = createBrowserRouter(createRoutesFromElements(
 
     <Route element={<PublicGuardPage />}>
       <Route path={RoutesPath.LOGIN.path} element={<LoginPage />} />
+      <Route path={RoutesPath.REGISTRATION.path} element={<RegistrationPage />} />
     </Route>
 
     <Route path={RoutesPath.NOT_FOUND.path}

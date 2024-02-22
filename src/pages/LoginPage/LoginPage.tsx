@@ -5,8 +5,11 @@ import { ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { useAppDispatch } from '@/store/hooks';
 import { setErrorMessage } from '@/store/slices/ErrorSlice';
 import { useLazyGetUserShortBioQuery, useLoginUserMutation } from '@/api';
+import { Typography } from 'antd';
+import { Link } from 'react-router-dom';
+import { RoutesPath } from '@/routes';
 
-const err = 'Неверный Логин или Пароль'
+const err = 'Неверный Логин или Пароль';
 
 const LoginPage = (): JSX.Element => {
 
@@ -26,9 +29,10 @@ const LoginPage = (): JSX.Element => {
           getUserShortBio({
             userId: data.data.id,
             userToken: data.data.accessToken,
-          })
+          });
         }
-      }).catch(() => {})
+      }).catch(() => {
+      });
     }
   };
 
@@ -38,8 +42,17 @@ const LoginPage = (): JSX.Element => {
   };
 
   return (
-    <div style={{minHeight: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-      <LoginForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
+    <div style={{
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      <Typography.Title>Авторизация</Typography.Title>
+      <LoginForm onFinish={onFinish}
+                 onFinishFailed={onFinishFailed}/>
+      <Link to={RoutesPath.REGISTRATION.path}>{RoutesPath.REGISTRATION.description}</Link>
     </div>
   );
 };
