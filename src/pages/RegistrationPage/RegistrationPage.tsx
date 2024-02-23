@@ -7,7 +7,8 @@ import { Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { RoutesPath } from '@/routes';
 import RegistrationForm from '@/components/RegistrationForm/RegistrationForm';
-import { useLazyGetUserShortBioQuery, useLoginUserMutation, useRegisterUserMutation } from '@/api';
+import { useRegisterUserMutation } from '@/api';
+import { useLogin } from '@/hooks/useLogin';
 
 const err = 'Ошибка регистрации';
 
@@ -16,8 +17,7 @@ const RegistrationPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [registerUser] = useRegisterUserMutation();
-  const [loginUser] = useLoginUserMutation();
-  const [getUserShortBio] = useLazyGetUserShortBioQuery();
+  const [loginUser] = useLogin();
 
 
   const onFinish = (values: IRegistrationFormField) => {
@@ -34,15 +34,7 @@ const RegistrationPage = (): JSX.Element => {
           loginUser({
             username: data.data.username,
             password: values.password as string,
-          }).then((data) => {
-            if ('data' in data) {
-              getUserShortBio({
-                userId: data.data.id,
-                userToken: data.data.accessToken,
-              });
-            }
-          }).catch(() => {
-          });
+          })
         }
       }).catch(() => {
       });
