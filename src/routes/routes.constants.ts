@@ -22,7 +22,7 @@ export const RoutesPath: IRoutesPaths = {
     description: 'Регистрация'
   },
   PLAYER_BIO: {
-    path: '/user',
+    path: '/user/',
     description: 'Личный кабинет'
   },
   PLAYER_TRAINING: {
@@ -30,23 +30,23 @@ export const RoutesPath: IRoutesPaths = {
     description: 'Тренировки',
   },
   PLAYER_STATS_TRAINING: {
-    path: '/training',
+    path: 'training',
     description: 'Статистика',
   },
   PLAYER_BEFORE_TRAINING: {
-    path: '/before',
+    path: 'before',
     description: 'Перед тренировкой',
   },
   PLAYER_AFTER_TRAINING: {
-    path: '/after',
+    path: 'after',
     description: 'После тренировки',
   },
   PLAYER_TEAMS: {
-    path: '/teams',
+    path: '/teams/',
     description: 'Команды',
   },
   PLAYER_CALENDAR: {
-    path: '/calendar',
+    path: '/calendar/',
     description: 'Расписание',
   }
 }

@@ -11,6 +11,7 @@ import PlayerPage from '@/pages/player/PlayerPage/PlayerPage';
 import PlayerBioPage from '@/pages/player/PlayerBioPage/PlayerBioPage';
 import LogoutPage from '@/pages/LogoutPage/LogoutPage';
 import RegistrationPage from '@/pages/RegistrationPage/RegistrationPage';
+import PlayerTrainingsPage from '@/pages/player/PlayerTrainigsPage/PlayerTrainingsPage';
 
 const routes = createBrowserRouter(createRoutesFromElements(
   <Route path={RoutesPath.INDEX.path}
@@ -21,6 +22,7 @@ const routes = createBrowserRouter(createRoutesFromElements(
       <Route path={RoutesPath.LOGOUT.path} element={<LogoutPage />}/>
       <Route path={RoutesPath.PLAYER_BIO.path} element={<PlayerPage />}>
         <Route index element={<PlayerBioPage />} />
+        <Route path={RoutesPath.PLAYER_STATS_TRAINING.path} element={<PlayerTrainingsPage />} />
       </Route>
     </Route>
 

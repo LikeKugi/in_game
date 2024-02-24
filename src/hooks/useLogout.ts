@@ -4,6 +4,7 @@ import { logoutAuthUser } from '@/store/slices/AuthSlice';
 import { logoutBioUser } from '@/store/slices/UserSlice';
 import { logoutRoleUser } from '@/store/slices/RolesSlice';
 import { useStorage } from '@/utils/useLocalStorage';
+import { clearTrainings } from '@/store/slices/TrainingsSlice';
 
 export const useLogout = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ export const useLogout = () => {
     dispatch(logoutAuthUser());
     dispatch(logoutBioUser());
     dispatch(logoutRoleUser());
+    dispatch(clearTrainings());
     // eslint-disable-next-line
   }, [dispatch]);
 }
