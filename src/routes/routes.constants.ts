@@ -31,7 +31,7 @@ export const RoutesPath: IRoutesPaths = {
   },
   PLAYER_STATS_TRAINING: {
     path: 'training',
-    description: 'Статистика',
+    description: 'Тренировки',
   },
   PLAYER_BEFORE_TRAINING: {
     path: 'before',
