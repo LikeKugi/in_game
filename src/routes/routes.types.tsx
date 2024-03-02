@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 export interface IRoute {
   path: string;
+  route: string;
   description: string;
   icon?: ReactNode;
 }

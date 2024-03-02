@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider } from 'react-router-dom';
 import { RoutesPath } from '@/routes/routes.constants';
 import RootPage from '@/pages/RootPage/RootPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
@@ -12,6 +12,7 @@ import PlayerBioPage from '@/pages/player/PlayerBioPage/PlayerBioPage';
 import LogoutPage from '@/pages/LogoutPage/LogoutPage';
 import RegistrationPage from '@/pages/RegistrationPage/RegistrationPage';
 import PlayerTrainingsPage from '@/pages/player/PlayerTrainigsPage/PlayerTrainingsPage';
+import PlayerBeforeTraining from '@/pages/player/PlayerBeforeTraining/PlayerBeforeTraining';
 
 const routes = createBrowserRouter(createRoutesFromElements(
   <Route path={RoutesPath.INDEX.path}
@@ -22,7 +23,12 @@ const routes = createBrowserRouter(createRoutesFromElements(
       <Route path={RoutesPath.LOGOUT.path} element={<LogoutPage />}/>
       <Route path={RoutesPath.PLAYER_BIO.path} element={<PlayerPage />}>
         <Route index element={<PlayerBioPage />} />
-        <Route path={RoutesPath.PLAYER_STATS_TRAINING.path} element={<PlayerTrainingsPage />} />
+        <Route path={RoutesPath.PLAYER_TRAINING.path} element={<Outlet />}>
+          <Route index element={<PlayerTrainingsPage />} />
+          <Route path={RoutesPath.PLAYER_STATS_TRAINING.path} element={<Outlet />}>
+            <Route path={RoutesPath.PLAYER_BEFORE_TRAINING.path} element={<PlayerBeforeTraining />}/>
+          </Route>
+        </Route>
       </Route>
     </Route>
 
