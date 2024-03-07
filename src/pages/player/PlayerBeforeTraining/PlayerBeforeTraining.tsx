@@ -20,7 +20,6 @@ const PlayerBeforeTraining = (): JSX.Element => {
   }
 
   const onSubmitForm = (values: IBeforeTrainingForm) => {
-    console.log(values)
     const data: IPostTrainingBeforeRequest = {
       userToken,
       trainingData: {

@@ -13,6 +13,7 @@ import LogoutPage from '@/pages/LogoutPage/LogoutPage';
 import RegistrationPage from '@/pages/RegistrationPage/RegistrationPage';
 import PlayerTrainingsPage from '@/pages/player/PlayerTrainigsPage/PlayerTrainingsPage';
 import PlayerBeforeTraining from '@/pages/player/PlayerBeforeTraining/PlayerBeforeTraining';
+import PlayerAfterTraining from '@/pages/player/PlayerAfterTraining/PlayerAfterTraining';
 
 const routes = createBrowserRouter(createRoutesFromElements(
   <Route path={RoutesPath.INDEX.path}
@@ -27,6 +28,7 @@ const routes = createBrowserRouter(createRoutesFromElements(
           <Route index element={<PlayerTrainingsPage />} />
           <Route path={RoutesPath.PLAYER_STATS_TRAINING.path} element={<Outlet />}>
             <Route path={RoutesPath.PLAYER_BEFORE_TRAINING.path} element={<PlayerBeforeTraining />}/>
+            <Route path={RoutesPath.PLAYER_AFTER_TRAINING.path} element={<PlayerAfterTraining />}/>
           </Route>
         </Route>
       </Route>

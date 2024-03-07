@@ -39,3 +39,21 @@ export interface IPostTrainingBeforeRequest {
   userToken: string;
   trainingData: Omit<ITrainingBefore, 'id'>;
 }
+
+export interface ITrainingAfterBase {
+  trainingId: number
+  userId: number
+  difficulty: number
+  comments: string
+}
+
+export interface ITrainingAfter extends ITrainingAfterBase {
+  id: number;
+}
+
+export interface IPostTrainingAfterRequest {
+  userToken: string;
+  trainingData: ITrainingAfterBase;
+}
+
+export type IAfterTrainingForm = Omit<ITrainingAfterBase, 'trainingId' | 'userId'>

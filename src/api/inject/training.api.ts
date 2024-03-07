@@ -1,8 +1,8 @@
 import { api } from '@/api';
 import {
   IGetTrainingsByUserIdRequest,
-  IGetTrainingsByUserIdResponse,
-  IPostTrainingBeforeRequest,
+  IGetTrainingsByUserIdResponse, IPostTrainingAfterRequest,
+  IPostTrainingBeforeRequest, ITrainingAfter,
   ITrainingBefore
 } from '@/types';
 
@@ -25,7 +25,18 @@ export const trainingApi = api.injectEndpoints({
           url: `/training/${data.trainingData.trainingId}/before`,
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${data.userToken}`
+            'Authorization': `Bearer ${data.userToken}`,
+          }
+        }
+      }
+    }),
+    postAfterTraining: build.mutation<ITrainingAfter, IPostTrainingAfterRequest>({
+      query(data) {
+        return{
+          url: `/training/${data.trainingData.trainingId}/after`,
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${data.userToken}`,
           }
         }
       }
@@ -33,4 +44,4 @@ export const trainingApi = api.injectEndpoints({
   })
 });
 
-export const {useLazyGetTrainingsByUserIdQuery, usePostBeforeTrainingMutation} = trainingApi
+export const {useLazyGetTrainingsByUserIdQuery, usePostBeforeTrainingMutation, usePostAfterTrainingMutation} = trainingApi
