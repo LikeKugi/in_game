@@ -1,7 +1,7 @@
 import { JSX, useState } from 'react';
-import { Drawer, FloatButton, Layout, Skeleton, theme } from 'antd';
+import { Drawer, FloatButton, Layout, Skeleton } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { Content, Header, Footer } from 'antd/es/layout/layout';
+import { Content, Footer } from 'antd/es/layout/layout';
 import AppFooter from '@/components/AppFooter/AppFooter';
 import { Outlet } from 'react-router-dom';
 import AppMenu from '@/components/AppMenu/AppMenu';
@@ -13,6 +13,7 @@ import { useAppSelector } from '@/store/hooks';
 import { selectIsLoggedIn } from '@/store/slices/AuthSlice';
 import { selectUserRole } from '@/store/slices/RolesSlice';
 import { AiOutlineMenuFold } from 'react-icons/ai';
+import AppHeader from '@/components/AppHeader/AppHeader';
 
 const RootPage = (): JSX.Element => {
 
@@ -22,10 +23,6 @@ const RootPage = (): JSX.Element => {
   const screens = useBreakpoint();
 
   const { isLoading } = useRefreshToken();
-
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const userRole = useAppSelector(selectUserRole);
@@ -56,12 +53,10 @@ const RootPage = (): JSX.Element => {
       </Sider>)}
 
       <Content style={{ display: 'flex', flexDirection: 'column' }}>
-        <Header style={{ backgroundColor: colorBgContainer }}>
-
-        </Header>
+        <AppHeader />
         <Layout style={{ display: 'flex' }}>
-          <Content>
-            {!screens.md && (<>
+          <Content style={{padding: '1rem'}}>
+            <div style={{backgroundColor: '#fefefe', padding: '1rem'}}>{!screens.md && (<>
               <Drawer title={'Главное меню'}
                       placement={'right'}
                       size="default"
@@ -72,11 +67,13 @@ const RootPage = (): JSX.Element => {
                            userRole={userRole}/>
                 </Skeleton>
               </Drawer>
-              <FloatButton onClick={toggleDrawer} tooltip={<div>Меню</div>} icon={<AiOutlineMenuFold/>} />;
+              <FloatButton onClick={toggleDrawer}
+                           tooltip={<div>Меню</div>}
+                           icon={<AiOutlineMenuFold/>}/>;
             </>)}
-            <Skeleton loading={isLoading}>
-              <Outlet/>
-            </Skeleton>
+              <Skeleton loading={isLoading}>
+                <Outlet/>
+              </Skeleton></div>
           </Content>
           <Footer>
             <div className={styles.RootPage__footer}>

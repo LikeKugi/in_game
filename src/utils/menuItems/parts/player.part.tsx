@@ -18,6 +18,9 @@ const items: MenuProps['items'] = [
     key: RoutesPath.PLAYER_BIO.path + RoutesPath.PLAYER_TRAINING.path,
     icon: <MdSports />,
   },
+]
+
+const additions: MenuProps['items'] = [
   {
     label: RoutesPath.PLAYER_TEAMS.description,
     key: RoutesPath.PLAYER_BIO.path + RoutesPath.PLAYER_TEAMS.path,
@@ -30,6 +33,6 @@ const items: MenuProps['items'] = [
   },
 ]
 
-export const getPlayerMenuPart = () => {
-  return items;
+export const getPlayerMenuPart = (add=false) => {
+  return add ? [...items, ...additions] : items;
 }
